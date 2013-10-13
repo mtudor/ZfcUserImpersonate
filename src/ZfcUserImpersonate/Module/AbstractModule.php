@@ -4,14 +4,14 @@ namespace ZfcUserImpersonate\Module;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\Feature\ControllerPluginProviderInterface;
+use Zend\ModuleManager\Feature\ControllerProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 
 abstract class AbstractModule implements
     AutoloaderProviderInterface,
     ConfigProviderInterface,
-    ControllerPluginProviderInterface,
+    ControllerProviderInterface,
     ServiceProviderInterface,
     ViewHelperProviderInterface
 {
