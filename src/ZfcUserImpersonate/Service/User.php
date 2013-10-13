@@ -64,7 +64,7 @@ class User extends ZfcUserUserService
     {
         // Assert that impersonation is in progress (i.e. the current user is being impersonated).
         if (!$this->isImpersonated()) {
-            throw new NotImpersonating();
+            throw new NotImpersonatingException();
         }
 
         // Retrieve the 'impersonator' (real user) from storage.
