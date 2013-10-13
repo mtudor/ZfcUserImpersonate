@@ -16,6 +16,7 @@ use ZfcUser\Service\User as ZfcUserUserService;
 use ZfcUserImpersonate\Exception\Domain as DomainException;
 use ZfcUserImpersonate\Exception\NotImpersonating as NotImpersonatingException;
 use ZfcUserImpersonate\Exception\UserNotFound as UserNotFoundException;
+use ZfcUserImpersonate\Exception\UserNotLoggedIn as UserNotLoggedInException;
 
 class User extends ZfcUserUserService
 {
@@ -37,6 +38,11 @@ class User extends ZfcUserUserService
      */
     public function impersonate($userId)
     {
+        // Ensure that there is a current user (i.e. the user is logged in).
+        if (!($this->getAuthService()->getIdentity() instanceof UserInterface)) {
+            throw new UserNotLoggedInException();
+        }
+
         // Retrieve the user to impersonate.
         $userToImpersonate = $this->getUserMapper()->findById($userId);
 
