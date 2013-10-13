@@ -18,14 +18,14 @@ class ModuleOptions extends AbstractOptions
      *
      * @var string
      */
-    protected $impersonateRedirectRoute = 'home';
+    protected $impersonateRedirectRoute = 'zfcuser';
 
     /**
      * The name of the route to which the user is redirected after ending an impersonation.
      *
      * @var string
      */
-    protected $unimpersonateRedirectRoute = 'home';
+    protected $unimpersonateRedirectRoute = 'zfcuser';
 
     /**
      * Get the route parameter name which will contain the user id of the user to be impersonated.
