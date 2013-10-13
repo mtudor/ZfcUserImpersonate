@@ -12,6 +12,10 @@ use ZfcUserImpersonate\Service\User as UserService;
 
 return array(
     'factories' => array(
+        'zfcuserimpersonate_module_options' => function ($sm) {
+            $config = $sm->get('Config');
+            return new ModuleOptions(isset($config['zfcuserimpersonate']) ? $config['zfcuserimpersonate'] : array());
+        },
         'zfcuserimpersonate_user_service' => function ($sm) {
             $userService = new UserService();
             $userService->setStorageForImpersonator(new Session(get_class($userService), 'impersonator'));
