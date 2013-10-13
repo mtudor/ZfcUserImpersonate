@@ -15,7 +15,6 @@ return array(
     'service_manager' => array(
         'allow_override' => true,
         'aliases' => array(
-            //'zfcuserimpersonate_user_service' => 'zfcuser_user_service',
             'zfcuser_user_service' => 'zfcuserimpersonate_user_service',
         ),
     ),
