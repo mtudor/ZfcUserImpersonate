@@ -57,7 +57,7 @@ class User extends ZfcUserUserService
 
         // Start impersonation by overwriting the identity stored in auth storage. Essentially, this sets the user to
         // impersonate as the logged-in user.
-        $this->getAuthService()->getStorage()->write($userToImpersonate);
+        $this->getAuthService()->getStorage()->write($userToImpersonate->getId());
     }
 
     /**
