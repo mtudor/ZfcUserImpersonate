@@ -32,6 +32,15 @@ $settings = array(
      * Accepted values: string
      */
     //'unimpersonate_redirect_route' => 'zfcuser',
+    
+    /**
+     * Store user to session as object or id
+     * 
+     * Set to false if you want to have the user object rebuilt from the database for each request.
+     * 
+     * Accepted values: boolean
+     */
+    //'store_user_as_object' => true,
 );
 
 /**
