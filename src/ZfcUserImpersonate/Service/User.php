@@ -29,6 +29,13 @@ class User extends ZfcUserUserService
     protected $storageForImpersonator;
 
     /**
+     * Store the user as an object (true) or id (false)
+     *
+     * @var bool
+     */
+    protected $storeUserAsObject;
+
+    /**
      * Begin impersonation of the user identified by the supplied user id.
      *
      * The specified user becomes the current user, such that for all intents and purposes they are now the logged-in
@@ -55,9 +62,15 @@ class User extends ZfcUserUserService
         // Store the 'impersonator' (real user) in storage to allow later unimpersonation.
         $this->getStorageForImpersonator()->write($this->getAuthService()->getIdentity());
 
+        // Config setting determines whether to write the whole object to the session
+        // or just the ID
+        if (!$this->getStoreUserAsObject()) {
+            $userToImpersonate = $userToImpersonate->getId();
+        }
+
         // Start impersonation by overwriting the identity stored in auth storage. Essentially, this sets the user to
         // impersonate as the logged-in user.
-        $this->getAuthService()->getStorage()->write($userToImpersonate->getId());
+        $this->getAuthService()->getStorage()->write($userToImpersonate);
     }
 
     /**
@@ -85,8 +98,15 @@ class User extends ZfcUserUserService
             );
         }
 
+        // Config setting determines whether to write the whole object to the session
+        // or just the ID
+        if (!$this->getStoreUserAsObject()) {
+            $impersonatorUser = $impersonatorUser->getId();
+        }
+
+
         // End impersonation by restoring the original identity - the 'impersonator' (real user) - to auth storage.
-        $this->getAuthService()->getStorage()->write($impersonatorUser->getId());
+        $this->getAuthService()->getStorage()->write($impersonatorUser);
 
         // Clear the 'impersonator' (real user) from storage.
         $this->getStorageForImpersonator()->clear();
@@ -131,4 +151,29 @@ class User extends ZfcUserUserService
         // Fluent interface.
         return $this;
     }
+
+    /**
+     * Get the setting for storing user to the session as object (rather than ID)
+     *
+     * @return bool
+     */
+    public function getStoreUserAsObject()
+    {
+        return $this->storeUserAsObject;
+    }
+
+    /**
+     * Set the setting for storing user to the session as object (rather than ID)
+     *
+     * @param bool $storeAsObject
+     * @return \ZfcUser\Options\ModuleOptions
+     */
+    public function setStoreUserAsObject($storeAsObject)
+    {
+        $this->storeUserAsObject = $storeAsObject;
+
+        // Fluent interface.
+        return $this;
+    }
+
 }

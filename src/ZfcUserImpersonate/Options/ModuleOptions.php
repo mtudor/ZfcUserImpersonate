@@ -28,6 +28,14 @@ class ModuleOptions extends AbstractOptions
     protected $unimpersonateRedirectRoute = 'zfcuser';
 
     /**
+     * Store user to session as object (true) or id (false). Set to false if you want
+     * to have the user object rebuilt from the database for each request.
+     *
+     * @var bool
+     */
+    protected $storeUserAsObject = true;
+
+    /**
      * Get the route parameter name which will contain the user id of the user to be impersonated.
      *
      * @return string
@@ -94,6 +102,30 @@ class ModuleOptions extends AbstractOptions
     public function setUnimpersonateRedirectRoute($unimpersonateRedirectRoute)
     {
         $this->unimpersonateRedirectRoute = $unimpersonateRedirectRoute;
+
+        // Fluent interface.
+        return $this;
+    }
+
+    /**
+     * Get the setting for storing user to the session as object (rather than ID)
+     *
+     * @return bool
+     */
+    public function getStoreUserAsObject()
+    {
+        return $this->storeUserAsObject;
+    }
+
+    /**
+     * Set the setting for storing user to the session as object (rather than ID)
+     *
+     * @param bool $storeAsObject
+     * @return \ZfcUser\Options\ModuleOptions
+     */
+    public function setStoreUserAsObject($storeAsObject)
+    {
+        $this->storeUserAsObject = $storeAsObject;
 
         // Fluent interface.
         return $this;
