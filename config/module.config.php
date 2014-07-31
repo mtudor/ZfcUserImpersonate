@@ -7,11 +7,6 @@
  */
 
 return array(
-    'controllers' => array(
-        'invokables' => array(
-            'zfcuser' => 'ZfcUserImpersonate\Controller\User',
-        ),
-    ),
     'service_manager' => array(
         'allow_override' => true,
         'aliases' => array(

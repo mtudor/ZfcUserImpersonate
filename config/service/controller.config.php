@@ -7,6 +7,7 @@
  */
 
 use ZfcUserImpersonate\Controller\Admin as AdminController;
+use ZfcUserImpersonate\Controller\User as UserController;
 
 return array(
     'factories' => array(
@@ -18,6 +19,18 @@ return array(
             $adminController->setUserService($sm->get('zfcuserimpersonate_user_service'));
 
             return $adminController;
+        },
+        'zfcuser' => function($controllerManager) {
+            /* @var ControllerManager $controllerManager*/
+            $serviceManager = $controllerManager->getServiceLocator();
+
+            /* @var RedirectCallback $redirectCallback */
+            $redirectCallback = $serviceManager->get('zfcuser_redirect_callback');
+
+            /* @var UserController $controller */
+            $controller = new UserController($redirectCallback);
+
+            return $controller;
         },
     )
 );
