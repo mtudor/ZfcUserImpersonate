@@ -19,9 +19,9 @@ return array(
 
             return $adminController;
         },
-        'zfcuser' => function($controllerManager) {
-            /* @var ControllerManager $controllerManager*/
-            $serviceManager = $controllerManager->getServiceLocator();
+        'zfcuser' => function($cm) {
+            /* @var ControllerManager $cm*/
+            $serviceManager = $cm->getServiceLocator();
 
             /* @var RedirectCallback $redirectCallback */
             $redirectCallback = $serviceManager->get('zfcuser_redirect_callback');
