@@ -41,7 +41,7 @@ class Admin extends AbstractActionController
         // Redirect to the post impersonation redirect route, if specified in config.
         $impersonateRedirectRoute = $config->getImpersonateRedirectRoute();
         if (!empty($impersonateRedirectRoute)) {
-            $this->redirect()->toRoute($impersonateRedirectRoute);
+            return $this->redirect()->toRoute($impersonateRedirectRoute);
         }
     }
 
@@ -60,7 +60,7 @@ class Admin extends AbstractActionController
         // Redirect to the post impersonation redirect route, if specified in config.
         $unimpersonateRedirectRoute = $config->getUnimpersonateRedirectRoute();
         if (!empty($unimpersonateRedirectRoute)) {
-            $this->redirect()->toRoute($unimpersonateRedirectRoute);
+            return $this->redirect()->toRoute($unimpersonateRedirectRoute);
         }
     }
 
