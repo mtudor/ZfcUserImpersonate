@@ -52,7 +52,7 @@ class ZfcUserImpersonatorIdentity extends AbstractHelper
      *
      * @param \ZfcUser\Service\User $userService
      */
-    public function setUserService(UserService $userService)
+    public function setUserService(ZfcUserUserService $userService)
     {
         $this->userService = $userService;
 
