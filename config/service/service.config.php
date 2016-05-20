@@ -18,6 +18,7 @@ return array(
         },
         'zfcuserimpersonate_user_service' => function ($sm) {
             $userService = new UserService();
+            $userService->setServiceManager($sm);
             $userService->setStorageForImpersonator(new Session(get_class($userService), 'impersonator'));
             $userService->setStoreUserAsObject($sm->get('zfcuserimpersonate_module_options')->getStoreUserAsObject());
             return $userService;
