@@ -2,6 +2,7 @@
     "name": "mtudor/zfc-user-impersonate",
     "description": "Facilitate impersonation of other users in ZfcUser.",
     "type": "library",
+    "license": "LGPL-2.1",
     "keywords": [
         "zf2",
         "zfcuser"
