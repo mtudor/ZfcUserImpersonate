@@ -10,19 +10,14 @@ use ZfcUserImpersonate\Controller;
 
 return array(
     'factories' => array(
-        'zfcuserimpersonate_adminController' => function ($cm) {
-            $sm = $cm->getServiceLocator();
-
+        'zfcuserimpersonate_adminController' => function ($sm) {
             $adminController = new Controller\Admin();
             $adminController->setConfig($sm->get('zfcuserimpersonate_module_options'));
             $adminController->setUserService($sm->get('zfcuserimpersonate_user_service'));
 
             return $adminController;
         },
-        'zfcuser' => function($cm) {
-            /* @var ControllerManager $cm*/
-            $serviceManager = $cm->getServiceLocator();
-
+        'zfcuser' => function($serviceManager) {
             /* @var RedirectCallback $redirectCallback */
             $redirectCallback = $serviceManager->get('zfcuser_redirect_callback');
 

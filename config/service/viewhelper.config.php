@@ -11,14 +11,14 @@ use ZfcUserImpersonate\View\Helper\ZfcUserImpersonatorIdentity;
 
 return array(
     'factories' => array(
-        'zfcUserImpersonatorDisplayName' => function ($hm) {
+        'zfcUserImpersonatorDisplayName' => function ($sm) {
             $viewHelper = new ZfcUserImpersonatorDisplayName();
-            $viewHelper->setUserService($hm->getServiceLocator()->get('zfcuserimpersonate_user_service'));
+            $viewHelper->setUserService($sm->get('zfcuserimpersonate_user_service'));
             return $viewHelper;
         },
-        'zfcUserImpersonatorIdentity' => function ($hm) {
+        'zfcUserImpersonatorIdentity' => function ($sm) {
             $viewHelper = new ZfcUserImpersonatorIdentity();
-            $viewHelper->setUserService($hm->getServiceLocator()->get('zfcuserimpersonate_user_service'));
+            $viewHelper->setUserService($sm->get('zfcuserimpersonate_user_service'));
             return $viewHelper;
         },
     ),
