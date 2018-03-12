@@ -24,4 +24,9 @@ return array(
             return $userService;
         }
     ),
+    'view_helpers' => include('viewhelper.config.php'),
+    'allow_override' => true,
+    'aliases' => array(
+        'zfcuser_user_service' => 'zfcuserimpersonate_user_service',
+    ),
 );

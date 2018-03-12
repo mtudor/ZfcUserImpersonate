@@ -8,12 +8,18 @@
 
 namespace ZfcUserImpersonate;
 
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\Mvc\MvcEvent;
 use Zend\View\Model\ViewModel;
 use ZfcUserImpersonate\Module\AbstractModule;
 
-class Module extends AbstractModule
+class Module implements ConfigProviderInterface
 {
+    public function getConfig($env = null)
+    {
+        return include __DIR__ . '/config/module.config.php';
+    }
+
     public function onBootstrap(MvcEvent $e)
     {
         // TODO: I'm not convinced that this is really the best way to achieve this.
