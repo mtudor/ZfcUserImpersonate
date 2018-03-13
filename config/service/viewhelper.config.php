@@ -11,15 +11,7 @@ use ZfcUserImpersonate\View\Helper\ZfcUserImpersonatorIdentity;
 
 return array(
     'factories' => array(
-        'zfcUserImpersonatorDisplayName' => function ($sm) {
-            $viewHelper = new ZfcUserImpersonatorDisplayName();
-            $viewHelper->setUserService($sm->get('zfcuserimpersonate_user_service'));
-            return $viewHelper;
-        },
-        'zfcUserImpersonatorIdentity' => function ($sm) {
-            $viewHelper = new ZfcUserImpersonatorIdentity();
-            $viewHelper->setUserService($sm->get('zfcuserimpersonate_user_service'));
-            return $viewHelper;
-        },
+        'zfcUserImpersonatorDisplayName' => \ZfcUserImpersonate\Factory\View\Helper\ZfcUserImpersonatorDisplayNameFactory::class,
+        'zfcUserImpersonatorIdentity' => \ZfcUserImpersonate\Factory\View\Helper\ZfcUserImpersonatorIdentityFactory::class,
     ),
 );
