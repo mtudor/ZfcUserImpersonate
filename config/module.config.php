@@ -7,10 +7,40 @@
  */
 
 return array(
-    'service_manager' => array(
-        'allow_override' => true,
-        'aliases' => array(
-            'zfcuser_user_service' => 'zfcuserimpersonate_user_service',
+    'controllers' => require('service/controller.config.php'),
+    'service_manager' => require('service/service.config.php'),
+    'view_helpers' => require('service/viewhelper.config.php'),
+    'router' => array(
+        'routes' => array(
+            'zfcuserimpersonate' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/admin/user',
+                ),
+                'may_terminate' => false,
+                'child_routes' => array(
+                    'impersonate' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/impersonate/:userId',
+                            'defaults' => array(
+                                'controller' => 'zfcuserimpersonate_adminController',
+                                'action'     => 'impersonateUser',
+                            ),
+                        ),
+                    ),
+                    'unimpersonate' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/unimpersonate',
+                            'defaults' => array(
+                                'controller' => 'zfcuserimpersonate_adminController',
+                                'action'     => 'unimpersonateUser',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
         ),
     ),
 );
