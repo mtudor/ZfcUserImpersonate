@@ -11,18 +11,17 @@
 
 namespace ZfcUserImpersonate\View\Helper;
 
-use Zend\View\Helper\AbstractHelper;
-use ZfcUser\Entity\UserInterface;
-use ZfcUser\Service\User as UserService;
-use ZfcUser\View\Helper\ZfcUserDisplayName;
+use LmcUser\Entity\UserInterface;
+use LmcUser\Service\User as UserService;
+use LmcUser\View\Helper\LmcUserDisplayName;
 use ZfcUserImpersonate\Exception\Domain as DomainException;
 
-class ZfcUserImpersonatorDisplayName extends ZfcUserDisplayName
+class ZfcUserImpersonatorDisplayName extends LmcUserDisplayName
 {
     /**
      * The user service.
      *
-     * @var \ZfcUser\Service\User
+     * @var UserService
      */
     protected $userService;
 
@@ -60,7 +59,7 @@ class ZfcUserImpersonatorDisplayName extends ZfcUserDisplayName
     /**
      * Get the user service.
      *
-     * @return ZfcUser\Service\User
+     * @return UserService
      */
     public function getUserService()
     {
@@ -70,7 +69,7 @@ class ZfcUserImpersonatorDisplayName extends ZfcUserDisplayName
     /**
      * Set the user service.
      *
-     * @param \ZfcUser\Service\User $userService
+     * @param UserService $userService
      */
     public function setUserService(UserService $userService)
     {

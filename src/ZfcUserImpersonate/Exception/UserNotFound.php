@@ -8,8 +8,6 @@
 
 namespace ZfcUserImpersonate\Exception;
 
-use ZfcUserImpersonate\Exception\ZfcUserImpersonate;
-
 class UserNotFound extends \RuntimeException implements ZfcUserImpersonate
 {
 }

@@ -9,8 +9,6 @@
 
 namespace ZfcUserImpersonate\Exception;
 
-use ZfcUserImpersonate\Exception\ZfcUserImpersonate;
-
 class NotImpersonating extends \RuntimeException implements ZfcUserImpersonate
 {
 }

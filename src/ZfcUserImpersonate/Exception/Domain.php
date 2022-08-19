@@ -8,7 +8,7 @@
 
 namespace ZfcUserImpersonate\Exception;
 
-use ZfcUser\Exception\DomainException;
+use LmcUser\Exception\DomainException;
 
 class Domain extends DomainException implements ZfcUserImpersonate
 {

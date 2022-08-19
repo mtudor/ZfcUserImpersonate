@@ -8,7 +8,7 @@
 
 namespace ZfcUserImpersonate\Controller;
 
-use ZfcUser\Controller\UserController as ZfcUserUserController;
+use LmcUser\Controller\UserController as ZfcUserUserController;
 
 class User extends ZfcUserUserController
 {
@@ -16,7 +16,7 @@ class User extends ZfcUserUserController
      * Logout and clear the identity of the current user, including identities associated with impersonating another
      * user.
      *
-     * @see \ZfcUser\Controller\UserController::logoutAction()
+     * @see \LmcUser\Controller\UserController::logoutAction()
      */
     public function logoutAction()
     {

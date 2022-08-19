@@ -2,7 +2,7 @@
 
 namespace ZfcUserImpersonate\ModuleManager\Feature;
 
-use \Zend\Stdlib\ArrayUtils;
+use Laminas\Stdlib\ArrayUtils;
 
 trait ControllerConfigProviderTrait
 {

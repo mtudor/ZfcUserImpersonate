@@ -10,9 +10,9 @@
 
 namespace ZfcUserImpersonate\Service;
 
-use Zend\Authentication\Storage\StorageInterface;
-use ZfcUser\Entity\UserInterface;
-use ZfcUser\Service\User as ZfcUserUserService;
+use Laminas\Authentication\Storage\StorageInterface;
+use LmcUser\Entity\UserInterface;
+use LmcUser\Service\User as ZfcUserUserService;
 use ZfcUserImpersonate\Exception\Domain as DomainException;
 use ZfcUserImpersonate\Exception\NotImpersonating as NotImpersonatingException;
 use ZfcUserImpersonate\Exception\UserNotFound as UserNotFoundException;
@@ -24,7 +24,7 @@ class User extends ZfcUserUserService
      * The storage container in which the 'impersonator' (real user) is stored whilst they are impersonating another
      * user.
      *
-     * @var \Zend\Authentication\Storage\StorageInterface
+     * @var \Laminas\Authentication\Storage\StorageInterface
      */
     protected $storageForImpersonator;
 
@@ -128,7 +128,7 @@ class User extends ZfcUserUserService
      *
      * Session storage is used by default unless a different storage adapter has been set.
      *
-     * @return \Zend\Authentication\Storage\StorageInterface
+     * @return StorageInterface
      */
     public function getStorageForImpersonator()
     {
@@ -140,8 +140,8 @@ class User extends ZfcUserUserService
      *
      * Session storage is used by default unless a different storage adapter has been set.
      *
-     * @param  \Zend\Authentication\Storage\StorageInterface $storageForImpersonator
-     * @return \ZfcUser\Service\User
+     * @param  StorageInterface $storageForImpersonator
+     * @return User
      */
     public function setStorageForImpersonator(StorageInterface $storageForImpersonator)
     {
@@ -166,7 +166,7 @@ class User extends ZfcUserUserService
      * Set the setting for storing user to the session as object (rather than ID)
      *
      * @param bool $storeAsObject
-     * @return \ZfcUser\Options\ModuleOptions
+     * @return User
      */
     public function setStoreUserAsObject($storeAsObject)
     {

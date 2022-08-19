@@ -6,6 +6,9 @@
  * @author Mark Tudor <code AT icefusion DOT co DOT uk>
  */
 
+use Laminas\Mvc\Controller\ControllerManager;
+use LmcUser\Controller\RedirectCallback;
+use LmcUser\Controller\UserController;
 use ZfcUserImpersonate\Controller;
 
 return array(

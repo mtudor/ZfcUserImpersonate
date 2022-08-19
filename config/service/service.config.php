@@ -6,7 +6,7 @@
  * @author Mark Tudor <code AT icefusion DOT co DOT uk>
  */
 
-use Zend\Authentication\Storage\Session;
+use Laminas\Authentication\Storage\Session;
 use ZfcUserImpersonate\Options\ModuleOptions;
 use ZfcUserImpersonate\Service\User as UserService;
 
