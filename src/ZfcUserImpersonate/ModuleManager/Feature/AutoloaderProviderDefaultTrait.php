@@ -14,10 +14,10 @@ trait AutoloaderProviderDefaultTrait {
     public function getAutoloaderConfig()
     {
         return array(
-            'Zend\Loader\ClassMapAutoloader' => array(
+            'Laminas\Loader\ClassMapAutoloader' => array(
                 $this->getDir() . '/autoload_classmap.php',
             ),
-            'Zend\Loader\StandardAutoloader' => array(
+            'Laminas\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
                     $this->getNamespace() => $this->getDir() . '/src/' . $this->getNamespace(),
                 ),

@@ -8,8 +8,8 @@
 
 namespace ZfcUserImpersonate;
 
-use Zend\Mvc\MvcEvent;
-use Zend\View\Model\ViewModel;
+use Laminas\Mvc\MvcEvent;
+use Laminas\View\Model\ViewModel;
 use ZfcUserImpersonate\Module\AbstractModule;
 
 class Module extends AbstractModule
