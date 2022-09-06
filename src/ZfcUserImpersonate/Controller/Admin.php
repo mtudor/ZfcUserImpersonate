@@ -9,7 +9,7 @@
 namespace ZfcUserImpersonate\Controller;
 
 use Laminas\Mvc\Controller\AbstractActionController;
-use LmcUser\Options\ModuleOptions;
+use ZfcUserImpersonate\Options\ModuleOptions;
 
 class Admin extends AbstractActionController
 {

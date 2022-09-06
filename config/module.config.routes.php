@@ -6,38 +6,38 @@
  * @author Mark Tudor <code AT icefusion DOT co DOT uk>
  */
 
-return array(
-    'router' => array(
-        'routes' => array(
-            'zfcuserimpersonate' => array(
-                'type' => 'Literal',
-                'options' => array(
+return [
+    'router' => [
+        'routes' => [
+            'zfcuserimpersonate' => [
+                'type' => Laminas\Router\Http\Literal::class,
+                'options' => [
                     'route' => '/admin/user',
-                ),
+                ],
                 'may_terminate' => false,
-                'child_routes' => array(
-                    'impersonate' => array(
-                        'type' => 'Segment',
-                        'options' => array(
+                'child_routes' => [
+                    'impersonate' => [
+                        'type' => Laminas\Router\Http\Segment::class,
+                        'options' => [
                             'route' => '/impersonate/:userId',
-                            'defaults' => array(
+                            'defaults' => [
                                 'controller' => 'zfcuserimpersonate_adminController',
                                 'action'     => 'impersonateUser',
-                            ),
-                        ),
-                    ),
-                    'unimpersonate' => array(
-                        'type' => 'Literal',
-                        'options' => array(
+                            ],
+                        ],
+                    ],
+                    'unimpersonate' => [
+                        'type' => Laminas\Router\Http\Literal::class,
+                        'options' => [
                             'route' => '/unimpersonate',
-                            'defaults' => array(
+                            'defaults' => [
                                 'controller' => 'zfcuserimpersonate_adminController',
                                 'action'     => 'unimpersonateUser',
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-        ),
-    ),
-);
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ]
+];
