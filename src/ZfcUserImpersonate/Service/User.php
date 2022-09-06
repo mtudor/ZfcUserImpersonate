@@ -60,7 +60,8 @@ class User extends ZfcUserUserService
         }
 
         // Store the 'impersonator' (real user) in storage to allow later unimpersonation.
-        $this->getStorageForImpersonator()->write($this->getAuthService()->getIdentity());
+        $id = $this->getAuthService()->getIdentity()->getId();
+        $this->getStorageForImpersonator()->write($id);
 
         // Config setting determines whether to write the whole object to the session
         // or just the ID
@@ -87,26 +88,10 @@ class User extends ZfcUserUserService
         }
 
         // Retrieve the 'impersonator' (real user) from storage.
-        $impersonatorUser = $this->getStorageForImpersonator()->read();
-
-        // Assert that the 'impersonator' (real user) is valid.
-        if (!$impersonatorUser instanceof UserInterface) {
-            // The 'impersonator' (real user) is not the correct type.
-            throw new DomainException(
-                '$$impersonatorUser is not an instance of UserInterface',
-                500
-            );
-        }
-
-        // Config setting determines whether to write the whole object to the session
-        // or just the ID
-        if (!$this->getStoreUserAsObject()) {
-            $impersonatorUser = $impersonatorUser->getId();
-        }
-
+        $impersonatorUserId = $this->getStorageForImpersonator()->read();
 
         // End impersonation by restoring the original identity - the 'impersonator' (real user) - to auth storage.
-        $this->getAuthService()->getStorage()->write($impersonatorUser);
+        $this->getAuthService()->getStorage()->write($impersonatorUserId);
 
         // Clear the 'impersonator' (real user) from storage.
         $this->getStorageForImpersonator()->clear();
